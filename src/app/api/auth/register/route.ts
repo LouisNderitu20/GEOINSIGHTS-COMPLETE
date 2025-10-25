@@ -65,4 +65,4 @@ export async function POST(req: Request) {
       details: process.env.NODE_ENV === 'development' ? error.message : undefined
     }, { status: 500 });
   }
-}
+}"export const dynamic = 'force-dynamic';" 
