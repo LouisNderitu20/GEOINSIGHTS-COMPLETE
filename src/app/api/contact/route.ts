@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
 
           <!-- HEADER -->
           <div style="background: linear-gradient(90deg, #004aad, #009ffd); padding: 25px; text-align: center;">
-            <img src="/logo.png" alt="GeoInsights Logo" style="max-width: 120px; margin-bottom: 10px;" />
+            <img src=""https://geoinsights.vercel.app/logo.png" alt="GeoInsights Logo" style="max-width: 120px; margin-bottom: 10px;" />
             <h1 style="color: #ffffff; font-size: 22px; margin: 0;">New Message from GeoInsights</h1>
           </div>
 
