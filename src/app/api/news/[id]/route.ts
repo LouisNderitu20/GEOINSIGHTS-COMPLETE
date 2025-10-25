@@ -4,11 +4,13 @@ import prisma from "@/lib/prisma";
 // GET single article
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }  // params is a Promise
 ) {
   try {
+    const { id } = await params;  // Await the params
+    
     const news = await prisma.news.findUnique({
-      where: { id: params.id },
+      where: { id },
     });
 
     if (!news) {
@@ -24,14 +26,15 @@ export async function GET(
 // PUT update article
 export async function PUT(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }  // params is a Promise
 ) {
   try {
+    const { id } = await params;  // Await the params
     const body = await req.json();
     const { title, content, author, published } = body;
 
     const updated = await prisma.news.update({
-      where: { id: params.id },
+      where: { id },
       data: { title, content, author, published },
     });
 
@@ -44,11 +47,13 @@ export async function PUT(
 // DELETE article
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }  // params is a Promise
 ) {
   try {
+    const { id } = await params;  // Await the params
+    
     await prisma.news.delete({
-      where: { id: params.id },
+      where: { id },
     });
 
     return NextResponse.json({ message: "Article deleted" }, { status: 200 });

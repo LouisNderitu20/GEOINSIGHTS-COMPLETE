@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
-import prisma from '@/lib/prisma'; // your prisma client
+import prisma from '@/lib/prisma';
 
-export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
-  const userId = params.id;
+export async function PUT(
+  req: NextRequest, 
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
 
   try {
     const updatedUser = await prisma.user.update({
-      where: { id: userId },
+      where: { id },
       data: { verified: true },
     });
 
