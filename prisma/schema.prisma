@@ -4,9 +4,10 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
 model User {
   id                 String      @id @default(uuid())
   username           String      @unique
@@ -23,10 +24,9 @@ model User {
 model News {
   id         String   @id @default(cuid())
   title      String
-  content    String   @db.LongText   
+  content    String   @db.Text   
   author     String
   published  Boolean  @default(true)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 }
-
