@@ -23,14 +23,16 @@ export async function POST(req: NextRequest) {
 
           <!-- HEADER -->
           <div style="background: linear-gradient(90deg, #004aad, #009ffd); padding: 25px; text-align: center;">
-            <img src="https://geoinsights.vercel.app/logo.png" 
-              alt="GeoInsights Logo" 
-              style="max-width: 120px; margin-bottom: 10px; display: block; border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic;" 
-              width="120" 
-              height="auto" />
-            <h1 style="color: #ffffff; font-size: 22px; margin: 0;">New Message from GeoInsights</h1>
+            <div style="text-align: center;">
+              <img src="https://geoinsights.vercel.app/logo.png" 
+                  alt="GeoInsights Logo" 
+                  style="max-width: 120px; margin-bottom: 10px; display: block; margin-left: auto; margin-right: auto; border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic;" 
+                  width="120" 
+                  height="auto" />
+            </div>
+            <h1 style="color: #ffffff; font-size: 22px; margin: 0; padding-top: 10px;">New Message from GeoInsights</h1>
           </div>
-
+          
           <!-- MESSAGE CONTENT -->
           <div style="padding: 25px; color: #333;">
             <p style="margin: 0 0 12px; font-size: 16px;"><strong style="color: #004aad;">Name:</strong> ${name}</p>
