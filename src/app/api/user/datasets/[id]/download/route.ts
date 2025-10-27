@@ -4,10 +4,9 @@ import { getCurrentUser } from '@/lib/auth-utils'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }  
 ) {
   try {
-
     const user = await getCurrentUser(request)
     
     if (!user) {
@@ -17,7 +16,8 @@ export async function GET(
       )
     }
 
-    const fileId = params.id
+    // Await the params Promise
+    const { id: fileId } = await params
 
     console.log('Download API called by user:', user.id, 'for file:', fileId)
 
