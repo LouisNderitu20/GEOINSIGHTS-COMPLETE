@@ -64,12 +64,17 @@ export default function HomePage() {
               icon: "fa-filter"
             },
             {
+              title: "Dataset Upload",
+              desc: "Upload CSV files with geographic data for easy storage as you use the system.",
+              icon: "fa-upload"
+            },
+            {
               title: "Seamless Exports",
               desc: "Export to CSV or GeoJSON in one click.",
               icon: "fa-file-export"
             },
           ].map((feature, idx) => (
-            <div className="col-md-4" key={idx}>
+            <div className="col-md-3" key={idx}>
               <div className="rounded-4 p-4 h-100 border shadow-sm feature-card bg-surface">
                 <div className="mb-3 fs-2 text-primary">
                   <i className={`fas ${feature.icon}`}></i>

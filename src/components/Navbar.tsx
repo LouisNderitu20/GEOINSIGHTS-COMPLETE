@@ -34,16 +34,21 @@ export default function Navbar() {
     }
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    setUsername(null);
-    toast.success('Logged out successfully!', {
-      position: 'top-center',
-      autoClose: 2000,
-      onClose: () => (window.location.href = '/dashboard'),
-    });
-  };
-
+ const handleLogout = () => {
+  localStorage.removeItem('token');
+  sessionStorage.clear(); 
+  setUsername(null);
+  
+  if (window.location.pathname === '/datasets') {
+    window.dispatchEvent(new Event('storage')); 
+  }
+  
+  toast.success('Logged out successfully!', {
+    position: 'top-center',
+    autoClose: 2000,
+    onClose: () => (window.location.href = '/dashboard'), 
+  });
+};
   const linkClass = 'text-primary text-decoration-none fw-medium';
 
   return (
@@ -68,11 +73,14 @@ export default function Navbar() {
           <Link href="/map" className={linkClass}>
             Map Area
           </Link>
-          <Link href="/about" className={linkClass}>
-            About Us
+          <Link href="/datasets" className={linkClass}>
+            Upload Dataset
           </Link>
           <Link href="/news" className={linkClass}>
             News
+          </Link>
+          <Link href="/about" className={linkClass}>
+            About Us
           </Link>
           <Link href="/contact" className={linkClass}>
             Contact Us

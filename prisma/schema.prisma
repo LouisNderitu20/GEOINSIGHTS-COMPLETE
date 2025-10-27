@@ -1,6 +1,5 @@
 generator client {
   provider = "prisma-client-js"
-  
 }
 
 datasource db {
@@ -9,24 +8,42 @@ datasource db {
 }
 
 model User {
-  id                 String      @id @default(uuid())
-  username           String      @unique
-  name               String
-  email              String      @unique
-  password           String
-  verified           Boolean     @default(false)
-  verificationToken  String?     @unique
-  role               String      @default("user")
-  createdAt          DateTime    @default(now())
-  lastLogin          DateTime? 
+  id                String    @id @default(uuid())
+  username          String    @unique
+  name              String
+  email             String    @unique
+  password          String
+  verified          Boolean   @default(false)
+  verificationToken String?   @unique
+  role              String    @default("user")
+  createdAt         DateTime  @default(now())
+  lastLogin         DateTime?
+  
+  datasets UserDataset[]
 }
 
 model News {
-  id         String   @id @default(cuid())
-  title      String
-  content    String   @db.Text   
-  author     String
-  published  Boolean  @default(true)
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  author    String
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model UserDataset {
+  id          String   @id @default(cuid())
+  name        String      
+  fileName    String      
+  fileSize    Int         
+  description String?     
+  content     String      @db.Text  
+  createdAt   DateTime    @default(now())
+  
+  
+  userId String
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("user_datasets")  
 }

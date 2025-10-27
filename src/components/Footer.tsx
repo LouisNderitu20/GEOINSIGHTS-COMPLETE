@@ -19,6 +19,7 @@ export default function Footer() {
             <ul className="list-unstyled small">
               <li><Link href="/" className="text-light text-decoration-none">Home</Link></li>
               <li><Link href="/map" className="text-light text-decoration-none">Map Area</Link></li>
+              <li><Link href="/datasets" className="text-light text-decoration-none">Upload Dataset</Link></li>
               <li><Link href="/about" className="text-light text-decoration-none">About Us</Link></li>
               <li><Link href="/contact" className="text-light text-decoration-none">Contact Us</Link></li>
               <li><Link href="/auth/login" className="text-light text-decoration-none">Login</Link></li>
