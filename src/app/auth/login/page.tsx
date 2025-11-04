@@ -97,15 +97,14 @@ export default function LoginPage() {
                   {loading ? 'Logging in...' : 'Login'}
                 </button>
               </div>
-
               <div className="text-center small">
                 Don't have an account?{' '}
-                <Link href="/auth/register" className="text-primary fw-semibold">
+                <Link href="/auth/register" className="text-primary fw-semibold text-decoration-none">
                   Register
                 </Link>
+                <span className="mx-2 text-muted">|</span>
                 <Link href="/forgot-password" className="text-primary text-decoration-none">
-                <i className="fas fa-key me-2"></i>
-                Forgot your password?
+                  Forgot password?
                 </Link>
               </div>
             </form>
