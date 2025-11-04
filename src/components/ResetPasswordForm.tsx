@@ -64,7 +64,7 @@ export default function ResetPasswordForm() {
         setConfirmPassword('');
         
         setTimeout(() => {
-          router.push('/login');
+          router.push('/auth/login');
         }, 3000);
       } else {
         setError(data.error || 'Failed to reset password');
@@ -209,7 +209,7 @@ export default function ResetPasswordForm() {
                   </button>
 
                   <div className="text-center">
-                    <Link href="/login" className="text-decoration-none text-primary">
+                    <Link href="/auth/login" className="text-decoration-none text-primary">
                       <i className="fas fa-arrow-left me-2"></i>
                       Back to Login
                     </Link>
