@@ -76,7 +76,7 @@ export async function POST(request: NextRequest) {
             <p style="font-size: 16px; margin-bottom: 20px;">Your GeoInsights password has been successfully reset.</p>
             
             <div style="text-align: center; margin: 30px 0;">
-              <div style="display: inline-block; padding: 14px 32px; background: #2cb9c9ff; color: white; border-radius: 8px; font-size: 16px; font-weight: 600;">
+              <div style="display: inline-block; padding: 14px 32px; background:linear-gradient(90deg, #004aad, #009ffd); color: white; border-radius: 8px; font-size: 16px; font-weight: 600;">
               Password Updated Successfully
               </div>
             </div>
