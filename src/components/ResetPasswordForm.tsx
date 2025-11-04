@@ -76,7 +76,6 @@ export default function ResetPasswordForm() {
     }
   };
 
-  // Loading state
   if (tokenValid === null) {
     return (
       <div className="min-vh-100 d-flex align-items-center py-4">
@@ -143,7 +142,6 @@ export default function ResetPasswordForm() {
           <div className="col-md-6 col-lg-4">
             <div className="card shadow border-0">
               <div className="card-body p-4">
-                {/* Header */}
                 <div className="text-center mb-4">
                   <div className=" d-inline-flex align-items-center justify-content-center mb-3" 
                        style={{ width: '100px', height: 'px' }}>
