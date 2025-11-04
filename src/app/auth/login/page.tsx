@@ -103,6 +103,10 @@ export default function LoginPage() {
                 <Link href="/auth/register" className="text-primary fw-semibold">
                   Register
                 </Link>
+                <Link href="/forgot-password" className="text-primary text-decoration-none">
+                <i className="fas fa-key me-2"></i>
+                Forgot your password?
+                </Link>
               </div>
             </form>
           </div>

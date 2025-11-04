@@ -60,7 +60,6 @@ export default function MapDisplay({
       zoomControl: true,
     });
 
-    // --- Base layers ---
     const baseLayers = {
       'OpenStreetMap': L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors',
@@ -85,7 +84,6 @@ export default function MapDisplay({
       ),
     };
 
-    // Restore OpenStreetMap as default
     baseLayers.OpenStreetMap.addTo(map);
 
     const markerCluster = L.markerClusterGroup();
@@ -96,7 +94,6 @@ export default function MapDisplay({
       visibleRef.current = [];
     }
 
-    // --- Filtering and marker creation ---
     points.forEach((point) => {
       const matchesTextFilter =
         !filter ||
@@ -142,11 +139,10 @@ export default function MapDisplay({
       markerCluster.addLayer(marker);
     });
 
-    // --- Enhanced Heatmap Configuration ---
     const intensityMap: Record<string, number> = {
-      'Confirmed Case': 1.0,  // Highest intensity for confirmed cases
-      'Sample Site': 0.7,     // Medium intensity for sample sites
-      'Pending Review': 0.4,  // Lower intensity for pending reviews
+      'Confirmed Case': 1.0, 
+      'Sample Site': 0.7,     
+      'Pending Review': 0.4,  
     };
 
     const heatPoints = points

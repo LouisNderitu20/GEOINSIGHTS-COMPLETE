@@ -18,6 +18,8 @@ model User {
   role              String    @default("user")
   createdAt         DateTime  @default(now())
   lastLogin         DateTime?
+  resetPasswordToken String?   @unique
+  resetPasswordExpires DateTime?
   
   datasets UserDataset[]
 }
