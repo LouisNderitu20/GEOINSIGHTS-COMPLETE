@@ -40,25 +40,23 @@ export default function ForgotPasswordForm() {
   };
 
   return (
-    <div className="min-vh-100 bg-light d-flex align-items-center py-4">
+    <div className="min-vh-100 d-flex align-items-center py-4">
       <div className="container-fluid">
         <div className="row justify-content-center">
           <div className="col-md-6 col-lg-4">
             <div className="card shadow border-0">
               <div className="card-body p-4">
-                {/* Header */}
                 <div className="text-center mb-4">
-                  <div className="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
-                       style={{ width: '70px', height: '70px' }}>
-                    <i className="fas fa-lock text-white fa-lg"></i>
+                  <div className=" d-inline-flex align-items-center justify-content-center mb-3" 
+                       style={{ width: '100px', height: 'px' }}>
+                    <img src="/logo.png" alt="GeoInsights Logo" width={100} height={100} className="mb-3" />
                   </div>
-                  <h2 className="card-title fw-bold text-dark mb-2">Reset Password</h2>
+                  <h2 className="card-title fw-bold mb-2">Reset Password</h2>
                   <p className="text-muted mb-0">
                     Enter your email to receive a reset link
                   </p>
                 </div>
 
-                {/* Form */}
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">
                     <label htmlFor="email" className="form-label fw-semibold">
@@ -93,14 +91,13 @@ export default function ForgotPasswordForm() {
                   </button>
 
                   <div className="text-center">
-                    <Link href="/login" className="text-decoration-none text-primary">
+                    <Link href="/auth/login" className="text-decoration-none text-primary">
                       <i className="fas fa-arrow-left me-2"></i>
                       Back to Login
                     </Link>
                   </div>
                 </form>
 
-                {/* Success Message */}
                 {message && (
                   <div className="alert alert-success mt-4" role="alert">
                     <div className="d-flex">
@@ -115,7 +112,6 @@ export default function ForgotPasswordForm() {
                   </div>
                 )}
 
-                {/* Error Message */}
                 {error && (
                   <div className="alert alert-danger mt-4" role="alert">
                     <div className="d-flex">
@@ -125,7 +121,6 @@ export default function ForgotPasswordForm() {
                   </div>
                 )}
 
-                {/* Help Text */}
                 <div className="mt-4 pt-3 border-top">
                   <div className="text-center">
                     <small className="text-muted">

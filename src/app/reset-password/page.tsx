@@ -3,7 +3,7 @@ import ResetPasswordForm from '@/components/ResetPasswordForm';
 
 function ResetPasswordFormFallback() {
   return (
-    <div className="min-vh-100 bg-light d-flex align-items-center py-4">
+    <div className="min-vh-100 d-flex align-items-center py-4">
       <div className="container-fluid">
         <div className="row justify-content-center">
           <div className="col-md-6 col-lg-4">

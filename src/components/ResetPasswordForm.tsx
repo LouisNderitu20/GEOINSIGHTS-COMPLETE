@@ -79,7 +79,7 @@ export default function ResetPasswordForm() {
   // Loading state
   if (tokenValid === null) {
     return (
-      <div className="min-vh-100 bg-light d-flex align-items-center py-4">
+      <div className="min-vh-100 d-flex align-items-center py-4">
         <div className="container-fluid">
           <div className="row justify-content-center">
             <div className="col-md-6 col-lg-4">
@@ -98,20 +98,19 @@ export default function ResetPasswordForm() {
     );
   }
 
-  // Invalid token state
   if (!tokenValid) {
     return (
-      <div className="min-vh-100 bg-light d-flex align-items-center py-4">
+      <div className="min-vh-100  d-flex align-items-center py-4">
         <div className="container-fluid">
           <div className="row justify-content-center">
             <div className="col-md-6 col-lg-4">
               <div className="card shadow border-0">
                 <div className="card-body p-4 text-center">
-                  <div className="bg-danger rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
-                       style={{ width: '70px', height: '70px' }}>
-                    <i className="fas fa-exclamation-triangle text-white fa-lg"></i>
+                  <div className=" d-inline-flex align-items-center justify-content-center mb-3" 
+                       style={{ width: '100px', height: 'px' }}>
+                    <img src="/logo.png" alt="GeoInsights Logo" width={100} height={100} className="mb-3" />
                   </div>
-                  <h3 className="text-dark mb-3">Invalid Reset Link</h3>
+                  <h3 className="mb-3">Invalid Reset Link</h3>
                   <p className="text-muted mb-4">
                     This password reset link is invalid or has expired.
                   </p>
@@ -122,7 +121,7 @@ export default function ResetPasswordForm() {
                     Request New Reset Link
                   </Link>
                   <Link 
-                    href="/login" 
+                    href="/auth/login" 
                     className="text-decoration-none text-primary"
                   >
                     <i className="fas fa-arrow-left me-2"></i>
@@ -137,9 +136,8 @@ export default function ResetPasswordForm() {
     );
   }
 
-  // Main reset form
   return (
-    <div className="min-vh-100 bg-light d-flex align-items-center py-4">
+    <div className="min-vh-100 d-flex align-items-center py-4">
       <div className="container-fluid">
         <div className="row justify-content-center">
           <div className="col-md-6 col-lg-4">
@@ -147,17 +145,16 @@ export default function ResetPasswordForm() {
               <div className="card-body p-4">
                 {/* Header */}
                 <div className="text-center mb-4">
-                  <div className="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
-                       style={{ width: '70px', height: '70px' }}>
-                    <i className="fas fa-key text-white fa-lg"></i>
+                  <div className=" d-inline-flex align-items-center justify-content-center mb-3" 
+                       style={{ width: '100px', height: 'px' }}>
+                    <img src="/logo.png" alt="GeoInsights Logo" width={100} height={100} className="mb-3" />
                   </div>
-                  <h2 className="card-title fw-bold text-dark mb-2">Set New Password</h2>
+                  <h2 className="card-title fw-bold mb-2">Set New Password</h2>
                   <p className="text-muted mb-0">
                     Create a new password for your account
                   </p>
                 </div>
 
-                {/* Form */}
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">
                     <label htmlFor="password" className="form-label fw-semibold">
@@ -219,7 +216,6 @@ export default function ResetPasswordForm() {
                   </div>
                 </form>
 
-                {/* Success Message */}
                 {message && (
                   <div className="alert alert-success mt-4" role="alert">
                     <div className="d-flex">
@@ -234,7 +230,6 @@ export default function ResetPasswordForm() {
                   </div>
                 )}
 
-                {/* Error Message */}
                 {error && (
                   <div className="alert alert-danger mt-4" role="alert">
                     <div className="d-flex">

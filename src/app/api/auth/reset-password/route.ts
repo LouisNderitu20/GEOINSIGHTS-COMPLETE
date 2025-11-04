@@ -60,7 +60,6 @@ export async function POST(request: NextRequest) {
       <div style="font-family: 'Segoe UI', sans-serif; background-color: #f4f6f9; padding: 20px;">
         <div style="max-width: 650px; margin: auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.08);">
 
-          <!-- HEADER -->
           <div style="background: linear-gradient(90deg, #004aad, #009ffd); padding: 25px; text-align: center;">
             <div style="text-align: center;">
               <img src="https://geoinsights.vercel.app/logo.png" 
@@ -72,13 +71,12 @@ export async function POST(request: NextRequest) {
             <h1 style="color: #ffffff; font-size: 22px; margin: 0; padding-top: 10px;">Password Reset Successful</h1>
           </div>
           
-          <!-- MESSAGE CONTENT -->
           <div style="padding: 25px; color: #333;">
             <p style="font-size: 16px; margin-bottom: 20px;">Hello <strong>${user.name}</strong>,</p>
             <p style="font-size: 16px; margin-bottom: 20px;">Your GeoInsights password has been successfully reset.</p>
             
             <div style="text-align: center; margin: 30px 0;">
-              <div style="display: inline-block; padding: 14px 32px; background: #10b981; color: white; border-radius: 8px; font-size: 16px; font-weight: 600;">
+              <div style="display: inline-block; padding: 14px 32px; background: #2cb9c9ff; color: white; border-radius: 8px; font-size: 16px; font-weight: 600;">
               Password Updated Successfully
               </div>
             </div>
@@ -94,7 +92,6 @@ export async function POST(request: NextRequest) {
             </div>
           </div>
 
-          <!-- FOOTER -->
           <div style="background: #004aad; text-align: center; padding: 15px; font-size: 13px; color: #ffffff;">
             This email confirms your password change at <strong>GeoInsights</strong>.<br/>
             <span style="opacity: 0.8;">&copy; ${new Date().getFullYear()} GeoInsights. All rights reserved.</span>
