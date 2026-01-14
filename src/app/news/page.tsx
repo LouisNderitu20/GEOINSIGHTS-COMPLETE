@@ -30,13 +30,10 @@ export default function NewsPage() {
     fetchNews();
   }, []);
 
-  // Function to format content with proper paragraphs
   const formatContent = (content: string, isExpanded: boolean, maxLength: number = 150) => {
-    // Split content into paragraphs
     const paragraphs = content.split('\n').filter(para => para.trim() !== '');
     
     if (!isExpanded && content.length > maxLength) {
-      // Show preview with first paragraph truncated
       const firstParagraph = paragraphs[0];
       const preview = firstParagraph.length > maxLength 
         ? firstParagraph.slice(0, maxLength) + '...' 
@@ -44,7 +41,7 @@ export default function NewsPage() {
       return <p className="card-text">{preview}</p>;
     }
 
-    // Show full content with proper paragraphs
+
     return (
       <div className="card-text">
         {paragraphs.map((paragraph, index) => (
@@ -83,7 +80,6 @@ export default function NewsPage() {
 
   return (
     <div className="container mt-5">
-      {/* Header Section */}
       <div className="text mb-4">
         <h2 className="fw-bold text-primary mb-2">
         Latest News
@@ -92,7 +88,6 @@ export default function NewsPage() {
            Stay informed with recent updates
       </p>
       </div>
-      {/* News Grid */}
       <div className="row g-4">
         {newsList.map((news) => {
           const isExpanded = expanded === news.id;
@@ -102,15 +97,11 @@ export default function NewsPage() {
             <div key={news.id} className="col-lg-6 col-xl-4 mb-4">
               <div className="card news-card h-100 border-0 shadow-sm hover-shadow">
                 <div className="card-body d-flex flex-column">
-                  {/* News Title */}
                   <h5 className="card-title text-primary fw-bold mb-3">
                     {news.title}
                   </h5>
-
-                  {/* News Content */}
                   {formatContent(news.content, isExpanded)}
 
-                  {/* Read More/Less Button */}
                   {shouldTruncate && (
                     <button
                       className="btn btn-link p-0 mt-2 text-decoration-none align-self-start"
@@ -121,7 +112,6 @@ export default function NewsPage() {
                     </button>
                   )}
 
-                  {/* Author and Date */}
                   <div className="mt-auto pt-3 border-top">
                     <div className="d-flex justify-content-between align-items-center">
                       <small className="text-muted">

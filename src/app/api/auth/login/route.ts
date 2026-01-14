@@ -7,7 +7,6 @@ export async function POST(req: Request) {
   try {
     const { identifier, password } = await req.json();
 
-    // 1) Find user
     const user = await prisma.user.findFirst({
       where: {
         OR: [{ email: identifier }, { username: identifier }],
@@ -21,7 +20,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // 2) Compare password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return NextResponse.json(
@@ -30,13 +28,11 @@ export async function POST(req: Request) {
       );
     }
 
-    // 3) Update last login
     await prisma.user.update({
       where: { id: user.id },
       data: { lastLogin: new Date() },
     });
 
-    // 4) Create JWT
     const token = jwt.sign(
       {
         id: user.id,
@@ -48,10 +44,9 @@ export async function POST(req: Request) {
       { expiresIn: "7d" }
     );
 
-    // 5) Set cookie + return response
     const response = NextResponse.json({
       success: true,
-      token, // keep this if your frontend still expects it
+      token, 
     });
 
     response.headers.set(

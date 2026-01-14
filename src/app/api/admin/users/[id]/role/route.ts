@@ -1,13 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 
-// For Next.js 15, params is a Promise
 export async function PUT(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }  // params is now a Promise
+  { params }: { params: Promise<{ id: string }> }  
 ) {
   try {
-    const { id } = await params;  // Await the params
+    const { id } = await params;  
     const body = await request.json();
 
     if (body.role && !["admin", "user"].includes(body.role)) {
@@ -41,10 +40,10 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }  // params is now a Promise
+  { params }: { params: Promise<{ id: string }> }  
 ) {
   try {
-    const { id } = await params;  // Await the params
+    const { id } = await params;  
     await prisma.user.delete({
       where: { id },
     });

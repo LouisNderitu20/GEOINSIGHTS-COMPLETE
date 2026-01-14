@@ -16,7 +16,6 @@ export async function GET(
       )
     }
 
-    // Await the params Promise
     const { id: fileId } = await params
 
     console.log('Download API called by user:', user.id, 'for file:', fileId)

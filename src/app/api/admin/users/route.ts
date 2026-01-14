@@ -1,9 +1,6 @@
-// src/app/api/admin/users/route.ts - CORRECTED VERSION
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 
-// This file should only handle /api/admin/users (without ID)
-// GET /api/admin/users - Get all users
 export async function GET() {
   try {
     const users = await prisma.user.findMany({
@@ -28,11 +25,9 @@ export async function GET() {
   }
 }
 
-// POST /api/admin/users - Create new user (if needed)
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    // Create user logic here if needed
     return NextResponse.json({ message: "User created" });
   } catch (err) {
     console.error("Error creating user:", err);
@@ -42,6 +37,3 @@ export async function POST(req: Request) {
     );
   }
 }
-
-// REMOVE PUT and DELETE functions from this file!
-// They belong in /api/admin/users/[id]/route.ts

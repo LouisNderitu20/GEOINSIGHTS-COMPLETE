@@ -1,13 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 
-// GET single article
 export async function GET(
   req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }  // params is a Promise
+  { params }: { params: Promise<{ id: string }> }  
 ) {
   try {
-    const { id } = await params;  // Await the params
+    const { id } = await params;  
     
     const news = await prisma.news.findUnique({
       where: { id },
@@ -23,13 +22,12 @@ export async function GET(
   }
 }
 
-// PUT update article
 export async function PUT(
   req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }  // params is a Promise
+  { params }: { params: Promise<{ id: string }> }  
 ) {
   try {
-    const { id } = await params;  // Await the params
+    const { id } = await params;  
     const body = await req.json();
     const { title, content, author, published } = body;
 
@@ -44,13 +42,12 @@ export async function PUT(
   }
 }
 
-// DELETE article
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: Promise<{ id: string }> }  // params is a Promise
+  { params }: { params: Promise<{ id: string }> }  
 ) {
   try {
-    const { id } = await params;  // Await the params
+    const { id } = await params;  
     
     await prisma.news.delete({
       where: { id },

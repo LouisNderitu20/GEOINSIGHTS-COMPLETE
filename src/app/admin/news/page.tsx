@@ -24,7 +24,6 @@ export default function AdminNewsPage() {
   const [editContent, setEditContent] = useState("");
   const [editAuthor, setEditAuthor] = useState("");
 
-  // Fetch all news on mount
   useEffect(() => {
     fetchNews();
   }, []);
@@ -86,7 +85,6 @@ export default function AdminNewsPage() {
     }
   };
 
-  // Edit functionality
   const startEditing = (news: News) => {
     setEditingId(news.id);
     setEditTitle(news.title);
@@ -142,7 +140,6 @@ export default function AdminNewsPage() {
         <i className="fa fa-newspaper me-2"></i> Manage News
       </h2>
 
-      {/* Create News */}
       <div className="card shadow-sm mb-5">
         <div className="card-body">
           <h5 className="card-title mb-3">Add New Article</h5>
@@ -184,7 +181,6 @@ export default function AdminNewsPage() {
         </div>
       </div>
 
-      {/* News List */}
       <h4 className="mb-3">All News</h4>
       {newsList.length === 0 ? (
         <p className="text-muted">No news articles available.</p>
@@ -195,7 +191,6 @@ export default function AdminNewsPage() {
               <div className="card shadow-sm h-100">
                 <div className="card-body d-flex flex-column">
                   {editingId === news.id ? (
-                    // Edit Mode
                     <>
                       <input
                         className="form-control mb-2"
@@ -237,7 +232,6 @@ export default function AdminNewsPage() {
                       </div>
                     </>
                   ) : (
-                    // View Mode
                     <>
                       <h5 className="card-title text-body">{news.title}</h5>
                       <p className="card-text flex-grow-1">

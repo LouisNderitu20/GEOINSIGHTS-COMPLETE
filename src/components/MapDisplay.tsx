@@ -154,39 +154,34 @@ export default function MapDisplay({
       )
       .map((p) => [p.lat, p.lng, intensityMap[p.type] || 0.6]);
 
-    // Enhanced heat layer with more intense settings
     const heatLayer = (L as any).heatLayer(heatPoints, {
-      radius: 35,           // Increased radius for larger heat areas
-      blur: 20,             // Slightly more blur for smoother transitions
-      maxZoom: 12,          // Higher max zoom to maintain heatmap at closer zoom levels
-      minOpacity: 0.4,      // Higher minimum opacity for better visibility
-      max: 1.0,             // Explicit max value
+      radius: 35,          
+      blur: 20,             
+      maxZoom: 12,          
+      minOpacity: 0.4,      
+      max: 1.0,             
       gradient: {
-        0.2: '#0000FF',     // Blue - low intensity
-        0.4: '#00FF00',     // Green - medium-low
-        0.6: '#FFFF00',     // Yellow - medium
-        0.8: '#FF7700',     // Orange - medium-high
-        1.0: '#FF0000'      // Red - high intensity
+        0.2: '#0000FF',     
+        0.4: '#00FF00',     
+        0.6: '#FFFF00',     
+        0.8: '#FF7700',     
+        1.0: '#FF0000'      
       },
     });
 
-    // --- Organized Layer Control ---
     const overlayMaps = {
       'Heatmap': heatLayer,
       'Marker Clusters': markerCluster,
     };
 
-    // Create layer control with proper organization
     const layerControl = L.control.layers(baseLayers, overlayMaps, {
       collapsed: true,
-      position: 'topright'  // Move to top-right for better organization
+      position: 'topright'  
     }).addTo(map);
-    
-    // Add both overlays by default but heatmap on top
+
     map.addLayer(markerCluster);
     map.addLayer(heatLayer);
 
-    // --- Enhanced Legend Control with Heatmap Info ---
     const typeColors: { [key: string]: string } = {
       'Sample Site': 'primary',
       'Confirmed Case': 'success',
@@ -244,7 +239,6 @@ export default function MapDisplay({
 
     new LegendControl({ position: 'bottomleft' }).addTo(map);
 
-    // Simulate loading completion (you can remove this timeout if you have actual async data loading)
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1000);
