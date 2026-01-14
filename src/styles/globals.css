@@ -94,7 +94,6 @@ body {
   padding: 0;
 
 }
-/* Light mode (default) */
 .card.custom-news {
   background-color: #ffffff;
   color: #212529;
@@ -109,7 +108,6 @@ body {
   color: #555;
 }
 
-/* Dark mode */
 body.dark .card.custom-news {
   background-color: #1e1e1e;
   color: #f8f9fa;
