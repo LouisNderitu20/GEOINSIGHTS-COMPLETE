@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { v4 as uuidv4 } from "uuid";
 
-// Create Prisma client with connection pooling
 const prisma = new PrismaClient()
 
 export async function POST(req: Request) {
@@ -14,7 +13,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "All fields are required." }, { status: 400 });
     }
 
-    // Check for existing user by both email and username
     const existingUser = await prisma.user.findFirst({
       where: {
         OR: [
@@ -30,7 +28,7 @@ export async function POST(req: Request) {
       }, { status: 409 });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 12); // Increased salt rounds
+    const hashedPassword = await bcrypt.hash(password, 12); 
     const verificationToken = uuidv4();
 
     const user = await prisma.user.create({
@@ -55,7 +53,6 @@ export async function POST(req: Request) {
   } catch (error: any) {
     console.error("Registration error details:", error);
     
-    // More specific error messages
     if (error.code === 'P2002') {
       return NextResponse.json({ error: "User with this email or username already exists." }, { status: 409 });
     }
