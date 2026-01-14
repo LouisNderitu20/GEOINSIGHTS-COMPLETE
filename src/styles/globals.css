@@ -59,7 +59,7 @@ body {
 }
 
 .bg-primary-gradient {
-  background: linear-gradient(135deg, var(--primary-color), #145374);
+  background: linear-gradient(135deg, var(--primary-color), #09527a);
 }
 
 [data-bs-theme="dark"] .btn-outline-secondary {
