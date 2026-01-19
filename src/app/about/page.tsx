@@ -57,7 +57,7 @@ export default function AboutPage() {
           {[
             ["Louis Nderitu", "Software Developer", "/images/team/louis.png"],
             ["Ann Wanjiru", "Data Analyst", "/images/team/ann.png"],
-            ["Dr. Ephraim", "Geospatial Engineer", "/images/team/ephraim.png"],
+            ["Dr. Peterson", "Geospatial Engineer", "/images/team/peterson.png"],
           ].map(([name, role, img], idx) => (
             <div className="col-md-4" key={idx}>
               <div className="p-4 bg-surface border rounded-4 shadow-sm h-100">

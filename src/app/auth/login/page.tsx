@@ -97,7 +97,7 @@ export default function LoginPage() {
                   {loading ? 'Logging in...' : 'Login'}
                 </button>
               </div>
-              <div className="text-center small">
+              <div className="text-center small text-body-secondary">
                 Don't have an account?{' '}
                 <Link href="/auth/register" className="text-primary fw-semibold text-decoration-none">
                   Register

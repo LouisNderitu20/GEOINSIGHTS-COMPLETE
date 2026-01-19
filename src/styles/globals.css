@@ -16,7 +16,7 @@ body {
 }
 
 :root {
-  --primary-color: #044170;
+  --primary-color: #0765ac;
   --primary-color-hover: #032d5c;
   --accent-color: #17a77a;
   --body-bg: #f8f9fc;
@@ -45,7 +45,7 @@ body {
 
 .text-body-secondary {
   color: var(--text-color) !important;
-  opacity: 0.8;
+  opacity: 1.2;
 }
 
 .text-heading {
@@ -85,7 +85,7 @@ body {
 }
 
 input::placeholder {
-  font-weight: 400;
+  font-weight: 150;
 }
 
 .legend {
