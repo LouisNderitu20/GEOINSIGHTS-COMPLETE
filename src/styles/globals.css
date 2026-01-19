@@ -15,10 +15,11 @@ body {
   padding: 0;
 }
 
+/* ---------------- LIGHT THEME ---------------- */
 :root {
-  --primary-color: #044986;
-  --primary-color-hover: #09527a;
-  --accent-color: #1cc88a;
+  --primary-color: #044170;          /* slightly muted dark blue */
+  --primary-color-hover: #032d5c;    /* darker hover */
+  --accent-color: #17a77a;           /* softened green */
   --body-bg: #f8f9fc;
   --text-color: #212529;
   --surface-bg: #ffffff;
@@ -27,10 +28,11 @@ body {
   --border-color: #dee2e6;
 }
 
+/* ---------------- DARK THEME ---------------- */
 [data-bs-theme="dark"] {
-  --primary-color: #0a6bbf; 
-  --primary-color-hover: #0d7ad8;
-  --accent-color: #1cc88a;
+  --primary-color: #06548c;          /* muted dark blue */
+  --primary-color-hover: #0b3f66;    /* darker hover */
+  --accent-color: #17a77a;           /* same softened green */
   --body-bg: #121212;
   --text-color: #f1f1f1;
   --surface-bg: #1e1e1e;
@@ -39,6 +41,7 @@ body {
   --border-color: #495057;
 }
 
+/* ---------------- TEXT COLORS ---------------- */
 .text-primary {
   color: var(--primary-color) !important;
 }
@@ -52,6 +55,7 @@ body {
   color: var(--heading-color) !important;
 }
 
+/* ---------------- BACKGROUNDS ---------------- */
 .bg-surface {
   background-color: var(--surface-bg) !important;
 }
@@ -64,10 +68,12 @@ body {
   border-color: var(--border-color) !important;
 }
 
+/* ---------------- GRADIENT ---------------- */
 .bg-primary-gradient {
   background: linear-gradient(135deg, var(--primary-color), var(--primary-color-hover));
 }
 
+/* ---------------- BUTTONS ---------------- */
 [data-bs-theme="dark"] .btn-outline-secondary {
   color: var(--text-color);
   border-color: var(--text-color);
@@ -84,10 +90,12 @@ body {
   color: #fff !important;
 }
 
+/* ---------------- INPUT PLACEHOLDERS ---------------- */
 input::placeholder {
   font-weight: 400;
 }
 
+/* ---------------- LEGEND ---------------- */
 .legend {
   z-index: 999;
   max-width: 220px;
@@ -95,6 +103,7 @@ input::placeholder {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* ---------------- CARDS ---------------- */
 .card.custom-news {
   background-color: var(--surface-bg);
   color: var(--text-color);
