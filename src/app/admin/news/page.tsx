@@ -242,7 +242,7 @@ export default function AdminNewsPage() {
                       <small className="text-muted">
                         <i className="fa fa-user me-1"></i> {news.author} |{" "}
                         <i className="fa fa-calendar me-1"></i>{" "}
-                        {new Date(news.createdAt).toLocaleDateString()}
+                        {new Date(news.createdAt).toLocaleDateString('en-GB')}
                       </small>
                       <div className="d-flex gap-2 mt-3 align-self-end">
                         <button

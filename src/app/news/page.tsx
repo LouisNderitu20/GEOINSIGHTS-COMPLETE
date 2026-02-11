@@ -120,7 +120,7 @@ export default function NewsPage() {
                       </small>
                       <small className="text-muted">
                         <i className="fas fa-calendar me-1"></i>
-                        {new Date(news.createdAt).toLocaleDateString('en-US', {
+                        {new Date(news.createdAt).toLocaleDateString('en-GB', {
                           year: 'numeric',
                           month: 'short',
                           day: 'numeric'

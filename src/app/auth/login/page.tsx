@@ -56,7 +56,7 @@ export default function LoginPage() {
   return (
     <main className="min-vh-100 d-flex align-items-center justify-content-center">
       <div className="col-md-6 col-lg-5">
-        <div className="card shadow-lg border-0 rounded-4">
+        <div className = "card shadow-lg rounded-4 bg-surface border">
           <div className="card-body p-4 text-center">
             <img src="/logo.png" alt="GeoInsights Logo" width={100} height={100} className="mb-3" />
             <h4 className="mb-4 fw-bold text-heading">Login to GeoInsights</h4>

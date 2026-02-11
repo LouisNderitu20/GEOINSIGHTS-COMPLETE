@@ -107,7 +107,7 @@ export default function AdminDashboard() {
   };
 
   const formatDate = (dateString: string | null) => {
-    return dateString ? new Date(dateString).toLocaleDateString() : 'Never';
+    return dateString ? new Date(dateString).toLocaleDateString('en-GB'): 'Never';
   };
 
   const handleApiAction = async (action: () => Promise<void>, type: keyof typeof actionLoading, userId: string) => {
@@ -241,7 +241,7 @@ export default function AdminDashboard() {
           </li>
         </ul>
         <div className="mt-auto pt-5">
-          <small className="text-muted">© 2025 GEOINSIGHTS.</small>
+          <small className="text-muted">&copy; {new Date().getFullYear()} GEOINSIGHTS.</small>
         </div>
       </div>
 
@@ -274,7 +274,7 @@ export default function AdminDashboard() {
         </div>
 
         <div className="d-flex justify-content-between align-items-center mb-3">
-          <div className="input-group" style={{ maxWidth: "300px" }}>
+          <div className="input-group" style={{ maxWidth: "500px" }}>
             <span className="input-group-text"><i className="fas fa-search"></i></span>
             <input type="text" className="form-control" placeholder="Search by email, username, or name..." 
               value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
@@ -313,20 +313,34 @@ export default function AdminDashboard() {
                   <td>{formatDate(user.createdAt)}</td>
                   <td>{formatDate(user.lastLogin)}</td>
                   <td>
-                    <button className="btn btn-sm btn-warning me-2" onClick={() => updateRole(user.id, "admin")}>
-                      <i className="fas fa-user-shield"></i> Make Admin
+                     <div className="d-flex flex-wrap gap-1">
+                    <button
+                      className={`btn btn-sm ${user.role === "admin" ? "btn-success" : "btn-warning"} me-1`}
+                      style={{ width: "80px" }}
+                      onClick={() =>
+                        updateRole(user.id, user.role === "admin" ? "user" : "admin")
+                      }
+                    >
+                      <i className={`fas ${user.role === "admin" ? "fa-user" : "fa-user-shield"}`}></i>{" "}
+                      {user.role === "admin" ? " Make User" : " Make Admin"}
                     </button>
-                    <button className="btn btn-sm btn-primary me-2" onClick={() => openEditModal(user)}>
+                    <button className="btn btn-sm btn-primary me-2" 
+                    style={{ width: "80px" }}
+                    onClick={() => openEditModal(user)}>
                       <i className="fas fa-edit"></i> Edit
                     </button>
-                    <button className={`btn btn-sm me-2 ${user.verified ? "btn-secondary" : "btn-success"}`}
+                    <button className={`btn btn-sm me-1 ${user.verified ? "btn-secondary" : "btn-success"}`}
+                      style={{ width: "80px" }}
                       onClick={() => toggleVerify(user.id, user.verified)}>
                       <i className={`fas ${user.verified ? "fa-times-circle" : "fa-check-circle"}`}></i>
-                      {user.verified ? "Unverify" : "Verify"}
+                      {user.verified ? " Unverify" : " Verify"}
                     </button>
-                    <button className="btn btn-sm btn-danger" onClick={() => deleteUser(user.id)}>
+                    <button className="btn btn-sm btn-danger" 
+                    style={{ width: "80px" }}
+                    onClick={() => deleteUser(user.id)}>
                       <i className="fas fa-trash"></i> Delete
                     </button>
+                    </div>
                   </td>
                 </tr>
               ))}

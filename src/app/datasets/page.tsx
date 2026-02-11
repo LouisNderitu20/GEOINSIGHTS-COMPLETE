@@ -285,7 +285,7 @@ export default function DatasetsPage() {
                         <div className="flex-grow-1">
                           <h3 className="h6 fw-medium  mb-1">{file.name}</h3>
                           <p className="text-muted small mb-0">
-                            {file.fileName} • {file.fileSize} bytes • {new Date(file.createdAt).toLocaleDateString()}
+                            {file.fileName} • {file.fileSize} bytes • {new Date(file.createdAt).toLocaleDateString('en-GB')}
                           </p>
                         </div>
                         <div className="btn-group ms-3">

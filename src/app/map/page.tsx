@@ -231,6 +231,9 @@ export default function MapPage() {
             ref={fileInputRef}
             onChange={handleFileUpload}
           />
+          <small className="text-muted d-block mt-2">
+            CSV Format Required: <code>lat,lng,label,type,species,year</code>
+         </small>
         </div>
         <div className="col-md-8 text-end">
           <button className="btn btn-outline-secondary me-2" onClick={clearData}>
