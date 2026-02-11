@@ -315,7 +315,7 @@ export default function AdminDashboard() {
                   <td>
                      <div className="d-flex flex-wrap gap-1">
                     <button
-                      className={`btn btn-sm ${user.role === "admin" ? "btn-success" : "btn-warning"} me-1`}
+                      className={`btn btn-sm ${user.role === "admin" ? "btn-success" : "btn-warning"} me-0`}
                       style={{ width: "80px" }}
                       onClick={() =>
                         updateRole(user.id, user.role === "admin" ? "user" : "admin")
@@ -324,12 +324,12 @@ export default function AdminDashboard() {
                       <i className={`fas ${user.role === "admin" ? "fa-user" : "fa-user-shield"}`}></i>{" "}
                       {user.role === "admin" ? " Make User" : " Make Admin"}
                     </button>
-                    <button className="btn btn-sm btn-primary me-2" 
+                    <button className="btn btn-sm btn-primary me-0" 
                     style={{ width: "80px" }}
                     onClick={() => openEditModal(user)}>
                       <i className="fas fa-edit"></i> Edit
                     </button>
-                    <button className={`btn btn-sm me-1 ${user.verified ? "btn-secondary" : "btn-success"}`}
+                    <button className={`btn btn-sm me-0 ${user.verified ? "btn-secondary" : "btn-success"}`}
                       style={{ width: "80px" }}
                       onClick={() => toggleVerify(user.id, user.verified)}>
                       <i className={`fas ${user.verified ? "fa-times-circle" : "fa-check-circle"}`}></i>
