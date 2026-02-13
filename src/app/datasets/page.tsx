@@ -105,7 +105,7 @@ export default function DatasetsPage() {
     } catch (error) {
       console.error('Upload error:', error)
       fetchUserFiles()
-      alert('Upload may have completed. Refreshing file list...')
+      alert('Only CSV files are allowed')
     } finally {
       setUploading(false)
     }
