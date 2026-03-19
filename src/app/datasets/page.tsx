@@ -1,6 +1,8 @@
 'use client'
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSession } from 'next-auth/react';
+
 interface UserFile {
   id: string
   name: string
@@ -10,50 +12,26 @@ interface UserFile {
 }
 
 export default function DatasetsPage() {
+  const { data: session, status } = useSession();
   const [files, setFiles] = useState<UserFile[]>([])
   const [loading, setLoading] = useState(true)
   const [uploading, setUploading] = useState(false)
 
   useEffect(() => {
-    fetchUserFiles()
-  }, [])
-
-  useEffect(() => {
-    const handleStorageChange = () => {
-      if (!localStorage.getItem('token')) {
-        setFiles([]);
-        setLoading(false);
-      }
-    };
-
-    window.addEventListener('storage', handleStorageChange);
-    
-    
-    if (!localStorage.getItem('token')) {
-      setFiles([]);
-      setLoading(false);
+    if (status === 'authenticated') {
+      fetchUserFiles()
+    } else if (status === 'unauthenticated') {
+      setFiles([])
+      setLoading(false)
     }
-    
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-    };
-  }, []);
+  }, [status])
 
   const fetchUserFiles = async () => {
     try {
-      
-      if (!localStorage.getItem('token')) {
-        setFiles([]);
-        setLoading(false);
-        return;
-      }
-
       const response = await fetch('/api/user/datasets')
-      
       
       if (response.status === 401) {
         setFiles([]);
-        localStorage.removeItem('token');
         return;
       }
       
@@ -70,8 +48,7 @@ export default function DatasetsPage() {
   const handleUpload = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     
-    
-    if (!localStorage.getItem('token')) {
+    if (status !== 'authenticated') {
       alert('Please log in to upload files');
       return;
     }
@@ -113,8 +90,7 @@ export default function DatasetsPage() {
 
   const handleDownload = async (fileId: string, fileName: string) => {
     try {
-      
-      if (!localStorage.getItem('token')) {
+      if (status !== 'authenticated') {
         alert('Please log in to download files');
         return;
       }
@@ -124,7 +100,6 @@ export default function DatasetsPage() {
       if (response.status === 401) {
         alert('Session expired. Please log in again.');
         setFiles([]);
-        localStorage.removeItem('token');
         return;
       }
       
@@ -132,20 +107,16 @@ export default function DatasetsPage() {
         throw new Error('Download failed')
       }
 
-      
       const blob = await response.blob()
-      
       const url = window.URL.createObjectURL(blob)
       const a = document.createElement('a')
       a.style.display = 'none'
       a.href = url
       a.download = fileName
       
-     
       document.body.appendChild(a)
       a.click()
       
-    
       window.URL.revokeObjectURL(url)
       document.body.removeChild(a)
       
@@ -158,8 +129,7 @@ export default function DatasetsPage() {
   const handleDelete = async (fileId: string, fileName: string) => {
     if (!confirm(`Delete ${fileName}?`)) return
 
-    
-    if (!localStorage.getItem('token')) {
+    if (status !== 'authenticated') {
       alert('Please log in to delete files');
       return;
     }
@@ -170,7 +140,6 @@ export default function DatasetsPage() {
       if (response.status === 401) {
         alert('Session expired. Please log in again.');
         setFiles([]);
-        localStorage.removeItem('token');
         return;
       }
 

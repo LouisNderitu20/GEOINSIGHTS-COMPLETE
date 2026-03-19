@@ -8,6 +8,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import ThemeProvider from "@/components/ThemeProvider";
 import BootstrapClientInit from "@/components/BootstrapClientInit"; 
 import LayoutWrapper from "@/components/LayoutWrapper";
+import { NextAuthProvider } from "@/components/NextAuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,13 +26,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider>
-          <BootstrapClientInit /> 
-          <LayoutWrapper>
-            {children}
-          </LayoutWrapper>
-          <Analytics />
-        </ThemeProvider>
+        <NextAuthProvider>
+          <ThemeProvider>
+            <BootstrapClientInit /> 
+            <LayoutWrapper>
+              {children}
+            </LayoutWrapper>
+            <Analytics />
+          </ThemeProvider>
+        </NextAuthProvider>
       </body>
     </html>
   );

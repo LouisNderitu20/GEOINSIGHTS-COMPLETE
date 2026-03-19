@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { signIn } from 'next-auth/react';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -17,34 +18,20 @@ export default function LoginPage() {
     setError(null);
 
     try {
-      const res = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ identifier, password }),
+      const result = await signIn('credentials', {
+        identifier,
+        password,
+        redirect: false,
       });
 
-      const contentType = res.headers.get('content-type');
-
-      if (!res.ok) {
-        if (contentType?.includes('application/json')) {
-          const errorData = await res.json();
-          throw new Error(errorData.error || 'Login failed');
-        } else {
-          throw new Error('Unexpected response from server');
-        }
+      if (result?.error) {
+        throw new Error(result.error === "CredentialsSignin" ? "Invalid email/username or password" : result.error);
       }
 
-      const data = await res.json();
-
-      if (!data.token) throw new Error('Missing token in response');
-
-      localStorage.setItem('token', data.token);
-
       router.push('/dashboard');
-      localStorage.setItem('token', data.token);
-          setTimeout(() => {
-          window.location.href = '/dashboard';
-          }, 100);
+      setTimeout(() => {
+        window.location.href = '/dashboard';
+      }, 100);
 
     } catch (err: any) {
       setError(err.message || 'Something went wrong');

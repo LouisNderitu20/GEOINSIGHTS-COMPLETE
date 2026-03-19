@@ -1,54 +1,25 @@
-'use client';
-
 import { useTheme } from '@/components/ThemeProvider';
 import Link from 'next/link';
-import { jwtDecode } from 'jwt-decode';
+import { useSession, signOut } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-type DecodedToken = {
-  id: string;
-  email: string;
-  username: string;
-  role: string;
-  exp: number;
-};
-
 export default function Navbar() {
   const { toggleTheme, theme } = useTheme();
-  const [username, setUsername] = useState<string | null>(null);
+  const { data: session } = useSession();
+  const username = (session?.user as any)?.username || session?.user?.name;
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const token = localStorage.getItem('token');
-      if (token) {
-        try {
-          const decoded = jwtDecode<DecodedToken>(token);
-          setUsername(decoded.username);
-        } catch (err) {
-          console.error('Invalid token');
-          localStorage.removeItem('token');
-        }
-      }
-    }
-  }, []);
-
- const handleLogout = () => {
-  localStorage.removeItem('token');
-  sessionStorage.clear(); 
-  setUsername(null);
-  
-  if (window.location.pathname === '/datasets') {
-    window.dispatchEvent(new Event('storage')); 
-  }
-  
-  toast.success('Logged out successfully!', {
-    position: 'top-center',
-    autoClose: 2000,
-    onClose: () => (window.location.href = '/dashboard'), 
-  });
-};
+  const handleLogout = async () => {
+    await signOut({ redirect: false });
+    localStorage.removeItem('token');
+    
+    toast.success('Logged out successfully!', {
+      position: 'top-center',
+      autoClose: 2000,
+      onClose: () => (window.location.href = '/'), 
+    });
+  };
   const linkClass = 'text-primary text-decoration-none fw-medium';
 
   return (

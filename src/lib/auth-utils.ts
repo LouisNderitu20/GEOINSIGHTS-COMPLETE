@@ -1,8 +1,8 @@
-import { NextRequest } from 'next/server'
-import jwt from 'jsonwebtoken'
-import bcrypt from 'bcryptjs'
-import crypto from 'crypto'
+import { getServerSession } from "next-auth/next"
+import { authOptions } from "./auth"
 import prisma from './prisma'
+import crypto from 'crypto'
+import bcrypt from 'bcryptjs'
 
 export interface AuthUser {
   id: string
@@ -11,22 +11,15 @@ export interface AuthUser {
   role: string
 }
 
-export async function getCurrentUser(request: NextRequest): Promise<AuthUser | null> {
+export async function getCurrentUser(request?: any): Promise<AuthUser | null> {
   try {
-    const token = request.cookies.get('token')?.value
+    const session = await getServerSession(authOptions)
     
-    if (!token) {
+    if (!session?.user) {
       return null
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as AuthUser
-    
-    const user = await prisma.user.findUnique({
-      where: { id: decoded.id },
-      select: { id: true, email: true, username: true, role: true }
-    })
-
-    return user
+    return session.user as AuthUser
   } catch (error) {
     console.error('Auth error:', error)
     return null

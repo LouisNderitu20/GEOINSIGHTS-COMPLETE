@@ -1,14 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { DatasetService } from '@/lib/datasetService'
-import { getUserFromToken } from '@/lib/auth'
+import { getCurrentUser } from '@/lib/auth-utils'
 
 export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }  
 ) {
   try {
-    const token = request.cookies.get('token')?.value
-    const user = await getUserFromToken(token)
+    const user = await getCurrentUser()
     
     if (!user) {
       return NextResponse.json(

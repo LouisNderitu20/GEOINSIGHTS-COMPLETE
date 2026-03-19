@@ -18,8 +18,6 @@ export async function GET(
 
     const { id: fileId } = await params
 
-    console.log('Download API called by user:', user.id, 'for file:', fileId)
-
     const file = await DatasetService.getUserFile(user.id, fileId)
 
     if (!file) {

@@ -13,7 +13,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    console.log('Upload API called by user:', user.id)
     
     const formData = await request.formData()
     const file = formData.get('file') as File
