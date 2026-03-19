@@ -4,11 +4,11 @@ import { getCurrentUser } from '@/lib/auth-utils'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }  
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const user = await getCurrentUser(request)
-    
+
     if (!user) {
       return NextResponse.json(
         { error: 'Unauthorized - Please sign in' },
@@ -29,10 +29,12 @@ export async function GET(
       )
     }
 
-    return new NextResponse(file.content, {
+    const encoded = new TextEncoder().encode(file.content)
+
+    return new NextResponse(encoded, {
       status: 200,
       headers: {
-        'Content-Type': 'text/csv',
+        'Content-Type': 'text/csv; charset=utf-8',
         'Content-Disposition': `attachment; filename="${file.fileName}"`,
       },
     })
@@ -40,7 +42,7 @@ export async function GET(
   } catch (error) {
     console.error('Download error:', error)
     return NextResponse.json(
-      { 
+      {
         error: 'Download failed',
         message: error instanceof Error ? error.message : 'Unknown error'
       },
