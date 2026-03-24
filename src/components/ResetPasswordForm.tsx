@@ -8,7 +8,7 @@ export default function ResetPasswordForm() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const token = searchParams.get('token');
-  
+
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -62,7 +62,7 @@ export default function ResetPasswordForm() {
         setMessage(data.message);
         setPassword('');
         setConfirmPassword('');
-        
+
         setTimeout(() => {
           router.push('/auth/login');
         }, 3000);
@@ -105,22 +105,22 @@ export default function ResetPasswordForm() {
             <div className="col-md-6 col-lg-4">
               <div className="card shadow border-0">
                 <div className="card-body p-4 text-center">
-                  <div className=" d-inline-flex align-items-center justify-content-center mb-3" 
-                       style={{ width: '100px', height: 'px' }}>
+                  <div className=" d-inline-flex align-items-center justify-content-center mb-3"
+                    style={{ width: '100px', height: 'px' }}>
                     <img src="/logo.png" alt="GeoInsights Logo" width={100} height={100} className="mb-3" />
                   </div>
                   <h3 className="mb-3">Invalid Reset Link</h3>
                   <p className="text-muted mb-4">
                     This password reset link is invalid or has expired.
                   </p>
-                  <Link 
-                    href="/forgot-password" 
+                  <Link
+                    href="/forgot-password"
                     className="btn btn-primary w-100 mb-3"
                   >
                     Request New Reset Link
                   </Link>
-                  <Link 
-                    href="/auth/login" 
+                  <Link
+                    href="/auth/login"
                     className="text-decoration-none text-primary"
                   >
                     <i className="fas fa-arrow-left me-2"></i>
@@ -143,8 +143,8 @@ export default function ResetPasswordForm() {
             <div className="card shadow border-0">
               <div className="card-body p-4">
                 <div className="text-center mb-4">
-                  <div className=" d-inline-flex align-items-center justify-content-center mb-3" 
-                       style={{ width: '100px', height: 'px' }}>
+                  <div className=" d-inline-flex align-items-center justify-content-center mb-3"
+                    style={{ width: '100px', height: 'px' }}>
                     <img src="/logo.png" alt="GeoInsights Logo" width={100} height={100} className="mb-3" />
                   </div>
                   <h2 className="card-title fw-bold mb-2">Set New Password</h2>

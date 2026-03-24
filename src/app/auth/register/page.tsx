@@ -56,7 +56,7 @@ export default function RegisterPage() {
                     className="form-control"
                     value={name}
                     onChange={e => setName(e.target.value)}
-                    placeholder="Jane Doe"
+                    placeholder="Enter your full name"
                     required
                   />
                 </div>
@@ -68,7 +68,7 @@ export default function RegisterPage() {
                     className="form-control"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
-                    placeholder="you@example.com"
+                    placeholder="Enter your email"
                     required
                   />
                 </div>
@@ -80,7 +80,7 @@ export default function RegisterPage() {
                     className="form-control"
                     value={username}
                     onChange={e => setUsername(e.target.value)}
-                    placeholder="jane_doe"
+                    placeholder="Enter your username"
                     required
                   />
                 </div>
